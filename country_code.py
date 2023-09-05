@@ -32,25 +32,23 @@ def save_game_copy():
 # Initialize the copy of the original CSV file for the current game
 create_game_copy()
 
-# Load the current country data and create the letter bank
-country_data = load_country_data()  # Load the copy for the current game
-letter_bank = create_letter_bank(country_data)  # Initialize the letter bank
-
 # Initialize a set to keep track of played countries
 played_countries = set()
 
 # Function to suggest a country based on the last letter of the input country
-def suggest_country(input_country):
-    last_letter = input_country[-1].lower()    
+def suggest_country(input_country, letter_bank):
+    last_letter = input_country[-1].lower()
+    
     if last_letter in letter_bank:
         available_countries = country_data[country_data['first_letter'] == last_letter]
         
-        if len(available_countries) > 1:
+        if len(available_countries) > 0:
             min_last_letter_count = float('inf')
             suggested_country = ""
+            
             for country in available_countries['country'].tolist():
                 if country not in played_countries:
-                    count = letter_bank.get(country[-1], 100)
+                    count = letter_bank.get(country[-1], float('inf'))
                     if count < min_last_letter_count:
                         min_last_letter_count = count
                         suggested_country = country
@@ -58,7 +56,9 @@ def suggest_country(input_country):
             if suggested_country:
                 played_countries.add(suggested_country)
                 country_data.drop(country_data[country_data['country'] == suggested_country].index, inplace=True)
-                letter_bank = create_letter_bank(country_data)
+                letter_bank[last_letter] -= 1
+                if letter_bank[last_letter] == 0:
+                    del letter_bank[last_letter]
                 save_game_copy()
                 return suggested_country
 
@@ -68,11 +68,17 @@ def suggest_country(input_country):
             if last_country not in played_countries:
                 played_countries.add(last_country)
                 country_data.drop(country_data[country_data['country'] == last_country].index, inplace=True)
-                letter_bank = create_letter_bank(country_data)
+                letter_bank[last_letter] -= 1
+                if letter_bank[last_letter] == 0:
+                    del letter_bank[last_letter]
                 save_game_copy()
                 return last_country
 
     return f"You win!!! No country found for {last_letter}"
+
+# Load the current country data and create the letter bank
+country_data = load_country_data()  # Load the copy for the current game
+letter_bank = create_letter_bank(country_data)  # Initialize the letter bank
 
 st.title("Eden's Country Game")
 input_country = st.text_input("Enter a country:", "").strip().lower()
@@ -89,7 +95,7 @@ if input_country:
             letter_bank[last_letter] -= 1
             if letter_bank[last_letter] == 0:
                 del letter_bank[last_letter]
-        suggested_country = suggest_country(input_country_lower)
+        suggested_country = suggest_country(input_country_lower, letter_bank)
         st.write(f"Suggested Country: {suggested_country}")
         st.session_state.turn += 1
     else:
