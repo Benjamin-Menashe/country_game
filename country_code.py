@@ -36,8 +36,8 @@ create_game_copy()
 country_data = load_country_data()  # Load the copy for the current game
 letter_bank = create_letter_bank(country_data)  # Initialize the letter bank
 
-# Initialize a list to keep track of played countries
-played_countries = []
+# Initialize a set to keep track of played countries
+played_countries = set()
 
 # Function to suggest a country based on the last letter of the input country
 def suggest_country(input_country):
@@ -48,13 +48,14 @@ def suggest_country(input_country):
             min_last_letter_count = float('inf')
             suggested_country = ""
             for country in available_countries['country'].tolist():
-                count = letter_bank.get(country[-1], float('inf'))
-                if count < min_last_letter_count and country not in played_countries:
-                    min_last_letter_count = count
-                    suggested_country = country
+                if country not in played_countries:
+                    count = letter_bank.get(country[-1], float('inf'))
+                    if count < min_last_letter_count:
+                        min_last_letter_count = count
+                        suggested_country = country
 
             if suggested_country:
-                played_countries.append(suggested_country)
+                played_countries.add(suggested_country)
                 country_data.drop(country_data[country_data['country'] == suggested_country].index, inplace=True)
                 letter_bank[last_letter] -= 1
                 if letter_bank[last_letter] == 0:
@@ -89,5 +90,5 @@ st.write(f"Turns taken: {st.session_state.turn}")
 if st.button("Reset Game"):
     delete_game_copy()
     create_game_copy()
-    played_countries.clear()  # Clear the list of played countries
+    played_countries.clear()  # Clear the set of played countries
     st.write("Game has been reset. Start a new game!")
