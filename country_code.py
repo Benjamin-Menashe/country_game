@@ -87,7 +87,7 @@ if input_country:
 # Display the turn count
 st.write(f"Your turn number: {st.session_state.turn}")
 
-st.write(if input_country)
+st.write([1 if input_country else 0])
 
 # Reset Game button
 if st.button("New Game"):
