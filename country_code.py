@@ -46,7 +46,7 @@ def suggest_country(input_country):
         available_countries = country_data[country_data['first_letter'] == last_letter]
         if len(available_countries) > 0:
             min_last_letter_count = float('inf')
-            suggested_country = ""
+            suggested_country = available_countries['country'][0]
             for country in available_countries['country'].tolist():
                 if country not in played_countries:
                     count = letter_bank.get(country[-1], float('inf'))
