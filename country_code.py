@@ -12,8 +12,16 @@ def delete_game_copy():
     if os.path.exists('current_game_countries.csv'):
         os.remove('current_game_countries.csv')
 
+# Function to create a letter bank given the current country data
+def create_letter_bank(data):
+    letter_bank = {}
+    for _, row in data.iterrows():
+        first_letter = row['first_letter']
+        letter_bank[first_letter] = letter_bank.get(first_letter, 0) + 1
+    return letter_bank
+
 # Load the CSV file containing the countries and their first/last letters
-@st.cache_resource
+@st.cache_data
 def load_country_data():
     return pd.read_csv('current_game_countries.csv') if os.path.exists('current_game_countries.csv') else pd.DataFrame()
 
@@ -24,13 +32,11 @@ def save_game_copy():
 # Initialize the copy of the original CSV file for the current game
 create_game_copy()
 
-letter_bank = {}
-country_data = load_country_data()
+# Load the current country data and create the letter bank
+country_data = load_country_data()  # Load the copy for the current game
+letter_bank = create_letter_bank(country_data)  # Initialize the letter bank
 
-for _, row in country_data.iterrows():
-    first_letter = row['first_letter']
-    letter_bank[first_letter] = letter_bank.get(first_letter, 0) + 1
-
+# Function to suggest a country based on the last letter of the input country
 def suggest_country(input_country):
     last_letter = input_country[-1].lower()
     if last_letter in letter_bank:
@@ -74,12 +80,10 @@ if input_country:
     else:
         st.write("Wrong input. The country is not in the current country bank.")
 
-if st.button("Reset Game"):
-    st.cache_resource.clear()
-    delete_game_copy()
-    create_game_copy()
-    st.session_state.turn = 0
-    st.write("Game has been reset. Start a new game!")
-
-
 st.write(f"Turns taken: {st.session_state.turn}")
+
+if st.button("Reset Game"):
+    delete_game_copy()
+    st.cache_data.clear()
+    create_game_copy()
+    st.write("Game has been reset. Start a new game!")
