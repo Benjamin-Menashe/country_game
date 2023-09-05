@@ -1,11 +1,16 @@
 ﻿country,first_letter,last_letter
 afghanistan,a,n
+alabama,a,a
+alaska,a,a
 albania,a,a
 algeria,a,a
 andorra,a,a
 angola,a,a
-antigua and barbuda,a,a
+barbuda,b,a
+antigua,a,a
 argentina,a,a
+arizona,a,a
+arkansas,a,s
 armenia,a,a
 australia,a,a
 austria,a,a
@@ -20,15 +25,16 @@ belize,b,e
 benin,b,n
 bhutan,b,n
 bolivia,b,a
-bosnia and herzegovina,b,a
+herzegovina,h,a
+bosnia,b,a
 botswana,b,a
 brazil,b,l
 brunei,b,i
 bulgaria,b,a
 burkina faso,b,o
 burundi,b,i
-côte d'ivoire,c,e
 cabo verde,c,e
+california,c,a
 cambodia,c,a
 cameroon,c,n
 canada,c,a
@@ -37,13 +43,17 @@ chad,c,d
 chile,c,e
 china,c,a
 colombia,c,a
+colorado,c,o
 comoros,c,s
-congo (congo-brazzaville),c,)
+congo,c,o
+connecticut,c,t
 costa rica,c,a
+côte d'ivoire,c,e
 croatia,c,a
 cuba,c,a
 cyprus,c,s
-czechia (czech republic),c,)
+czech republic,c,c
+delaware,d,e
 democratic republic of the congo,d,o
 denmark,d,k
 djibouti,d,i
@@ -55,13 +65,15 @@ el salvador,e,r
 equatorial guinea,e,a
 eritrea,e,a
 estonia,e,a
-"eswatini (fmr. ""swaziland"")",e,)
+eswatini,e,i
 ethiopia,e,a
 fiji,f,i
 finland,f,d
+florida,f,a
 france,f,e
 gabon,g,n
 gambia,g,a
+georgia,g,a
 georgia,g,a
 germany,g,y
 ghana,g,a
@@ -72,12 +84,17 @@ guinea,g,a
 guinea-bissau,g,u
 guyana,g,a
 haiti,h,i
+hawaii,h,i
 holy see,h,e
 honduras,h,s
 hungary,h,y
 iceland,i,d
+idaho,i,o
+illinois,i,s
 india,i,a
+indiana,i,a
 indonesia,i,a
+iowa,i,a
 iran,i,n
 iraq,i,q
 ireland,i,d
@@ -86,7 +103,9 @@ italy,i,y
 jamaica,j,a
 japan,j,n
 jordan,j,n
+kansas,k,s
 kazakhstan,k,n
+kentucky,k,y
 kenya,k,a
 kiribati,k,i
 kuwait,k,t
@@ -99,48 +118,70 @@ liberia,l,a
 libya,l,a
 liechtenstein,l,n
 lithuania,l,a
+louisiana,l,a
 luxembourg,l,g
 madagascar,m,r
+maine,m,e
 malawi,m,i
 malaysia,m,a
 maldives,m,s
 mali,m,i
 malta,m,a
 marshall islands,m,s
+maryland,m,d
+massachusetts,m,s
 mauritania,m,a
 mauritius,m,s
 mexico,m,o
+michigan,m,n
 micronesia,m,a
+minnesota,m,a
+mississippi,m,i
+missouri,m,i
 moldova,m,a
 monaco,m,o
 mongolia,m,a
+montana,m,a
 montenegro,m,o
 morocco,m,o
 mozambique,m,e
-myanmar (formerly burma),m,)
+myanmar,m,r
 namibia,n,a
 nauru,n,u
+nebraska,n,a
 nepal,n,l
 netherlands,n,s
+nevada,n,a
+new hampshire,n,e
+new jersey,n,y
+new mexico,n,o
+new york,n,k
 new zealand,n,d
 nicaragua,n,a
 niger,n,r
 nigeria,n,a
+north carolina,n,a
+north dakota,n,a
 north korea,n,a
 north macedonia,n,a
 norway,n,y
+ohio,o,o
+oklahoma,o,a
 oman,o,n
+oregon,o,n
 pakistan,p,n
 palau,p,u
 palestine state,p,e
 panama,p,a
 papua new guinea,p,a
 paraguay,p,y
+pennsylvania,p,a
 peru,p,u
 philippines,p,s
 poland,p,d
 portugal,p,l
 qatar,q,r
+rhode island,r,d
 romania,r,a
 russia,r,a
 rwanda,r,a
@@ -161,6 +202,8 @@ slovenia,s,a
 solomon islands,s,s
 somalia,s,a
 south africa,s,a
+south carolina,s,a
+south dakota,s,a
 south korea,s,a
 south sudan,s,n
 spain,s,n
@@ -172,6 +215,8 @@ switzerland,s,d
 syria,s,a
 tajikistan,t,n
 tanzania,t,a
+tennessee,t,e
+texas,t,s
 thailand,t,d
 timor-leste,t,e
 togo,t,o
@@ -187,60 +232,17 @@ united arab emirates,u,s
 united kingdom,u,m
 united states of america,u,a
 uruguay,u,y
+utah,u,h
 uzbekistan,u,n
 vanuatu,v,u
 venezuela,v,a
-vietnam,v,m
-yemen,y,n
-zambia,z,a
-zimbabwe,z,e
-alabama,a,a
-alaska,a,a
-arizona,a,a
-arkansas,a,s
-california,c,a
-colorado,c,o
-connecticut,c,t
-delaware,d,e
-florida,f,a
-georgia,g,a
-hawaii,h,i
-idaho,i,o
-illinois,i,s
-indiana,i,a
-iowa,i,a
-kansas,k,s
-kentucky,k,y
-louisiana,l,a
-maine,m,e
-maryland,m,d
-massachusetts,m,s
-michigan,m,n
-minnesota,m,a
-mississippi,m,i
-missouri,m,i
-montana,m,a
-nebraska,n,a
-nevada,n,a
-new hampshire,n,e
-new jersey,n,y
-new mexico,n,o
-new york,n,k
-north carolina,n,a
-north dakota,n,a
-ohio,o,o
-oklahoma,o,a
-oregon,o,n
-pennsylvania,p,a
-rhode island,r,d
-south carolina,s,a
-south dakota,s,a
-tennessee,t,e
-texas,t,s
-utah,u,h
 vermont,v,t
+vietnam,v,m
 virginia,v,a
 washington,w,n
 west virginia,w,a
 wisconsin,w,n
 wyoming,w,g
+yemen,y,n
+zambia,z,a
+zimbabwe,z,e
