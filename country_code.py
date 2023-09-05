@@ -46,7 +46,6 @@ def suggest_country(input_country):
             letter_bank[last_letter] -= 1
             if letter_bank[last_letter] == 0:
                 del letter_bank[last_letter]
-            save_game_copy()  # Save the updated data to the copy CSV file
             return country
     return "No country found for that letter."
 
