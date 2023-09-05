@@ -54,13 +54,26 @@ def suggest_country(input_country):
                         min_last_letter_count = count
                         suggested_country = country
 
-
             if suggested_country:
                 played_countries.add(suggested_country)
                 country_data.drop(country_data[country_data['country'] == suggested_country].index, inplace=True)
-                create_letter_bank(country_data)
+                letter_bank[last_letter] -= 1
+                if letter_bank[last_letter] == 0:
+                    del letter_bank[last_letter]
                 save_game_copy()
                 return suggested_country
+
+        # If only one country with the given first letter is left, suggest it
+        if len(available_countries) == 1 and available_countries.iloc[0]['country'] not in played_countries:
+            suggested_country = available_countries.iloc[0]['country']
+            played_countries.add(suggested_country)
+            country_data.drop(country_data[country_data['country'] == suggested_country].index, inplace=True)
+            letter_bank[last_letter] -= 1
+            if letter_bank[last_letter] == 0:
+                del letter_bank[last_letter]
+            save_game_copy()
+            return suggested_country
+
     return f"You win!!! No country found for {last_letter}"
 
 st.title("Eden's Country Game")
@@ -73,7 +86,6 @@ if input_country:
     input_country_lower = input_country.lower()
     if input_country_lower in country_data['country'].str.lower().tolist():
         country_data.drop(country_data[country_data['country'].str.lower() == input_country_lower].index, inplace=True)
-        create_letter_bank(country_data)
         last_letter = input_country_lower[-1].lower()
         if last_letter in letter_bank:
             letter_bank[last_letter] -= 1
