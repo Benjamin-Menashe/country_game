@@ -68,7 +68,7 @@ input_country = st.text_input("Enter a country:", "").strip().lower()  # Convert
 if 'turn' not in st.session_state:
     st.session_state.turn = 0
 
-if input_country:
+if len(input_country) > 0:
     if input_country in country_data['country'].str.lower().tolist():  # Convert to lowercase for comparison
         country_data.drop(country_data[country_data['country'].str.lower() == input_country].index, inplace=True)  # Convert to lowercase for comparison
         last_letter = input_country[-1].lower()
@@ -86,8 +86,6 @@ if input_country:
 
 # Display the turn count
 st.write(f"Your turn number: {st.session_state.turn}")
-
-st.write([1 if input_country else 0])
 
 # Reset Game button
 if st.button("New Game"):
