@@ -48,11 +48,8 @@ def suggest_country(input_country):
             min_last_letter_count = float('inf')
             suggested_country = ""
             for country in available_countries['country'].tolist():
-                if country not in played_countries:
-                    count = letter_bank.get(country[-1], float('inf'))
-                    if count <= min_last_letter_count:
-                        min_last_letter_count = count
-                        suggested_country = country
+                country = random.choice(available_countries['country'].tolist())
+
 
             if suggested_country:
                 played_countries.add(suggested_country)
@@ -93,5 +90,3 @@ if st.button("Reset Game"):
     st.write("Game has been reset. Start a new game!")
 
 st.write(f"Turns taken: {st.session_state.turn}")
-
-st.write(letter_bank["y"])
