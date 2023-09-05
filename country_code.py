@@ -27,7 +27,7 @@ create_game_copy()
 
 # Create a letter bank to count and sort the letters
 letter_bank = {}
-country_data = load_country_data()  # Load the copy for the current game
+country_data = load_country_data().copy()  # Load the copy for the current game
 
 for _, row in country_data.iterrows():
     first_letter = row['first_letter']
