@@ -46,7 +46,7 @@ def suggest_country(input_country, letter_bank):
     if last_letter in letter_bank:
         available_countries = country_data[country_data['first_letter'] == last_letter]
         
-        if len(available_countries) > 0:
+        if len(available_countries) > 1:
             min_last_letter_count = float('inf')
             suggested_country = ""
             
