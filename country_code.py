@@ -62,7 +62,7 @@ def suggest_country(input_country):
     return f"You win!!! No country found for {last_letter}"
 
 # Streamlit UI
-st.title("Country Game")
+st.title("Eden's Country Game")
 
 # User input for a country
 input_country = st.text_input("Enter a country:", "").strip().lower()  # Convert to lowercase
