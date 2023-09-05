@@ -94,7 +94,7 @@ if input_country:
 # Display the turn count
 st.write(f"Turns taken: {st.session_state.turn}")
 
-st.write(country_data['country'].str.lower().tolist()[0])
+st.write(country_data['country'].str.tolist())
 
 # Reset Game button
 if st.button("Reset Game"):
