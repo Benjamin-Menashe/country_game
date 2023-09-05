@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
-import shutil  # For copying the CSV file
-import os     # For file deletion
+import shutil
+import os
 
 # Function to create a copy of the original CSV file for the current game
 def create_game_copy():
@@ -21,7 +21,7 @@ def create_letter_bank(data):
     return letter_bank
 
 # Load the CSV file containing the countries and their first/last letters
-@st.cache_data
+@st.cache_resource
 def load_country_data():
     return pd.read_csv('current_game_countries.csv') if os.path.exists('current_game_countries.csv') else pd.DataFrame()
 
@@ -30,13 +30,14 @@ def save_game_copy():
     country_data.to_csv('current_game_countries.csv', index=False)
 
 # Initialize the copy of the original CSV file for the current game
-if 'turn' not in st.session_state:
-    create_game_copy()
-    st.session_state.turn = 0
+create_game_copy()
 
 # Load the current country data and create the letter bank
 country_data = load_country_data()  # Load the copy for the current game
 letter_bank = create_letter_bank(country_data)  # Initialize the letter bank
+
+# Initialize a list to keep track of played countries
+played_countries = []
 
 # Function to suggest a country based on the last letter of the input country
 def suggest_country(input_country):
@@ -48,11 +49,12 @@ def suggest_country(input_country):
             suggested_country = ""
             for country in available_countries['country'].tolist():
                 count = letter_bank.get(country[-1], float('inf'))
-                if count < min_last_letter_count:
+                if count < min_last_letter_count and country not in played_countries:
                     min_last_letter_count = count
                     suggested_country = country
 
             if suggested_country:
+                played_countries.append(suggested_country)
                 country_data.drop(country_data[country_data['country'] == suggested_country].index, inplace=True)
                 letter_bank[last_letter] -= 1
                 if letter_bank[last_letter] == 0:
@@ -63,6 +65,9 @@ def suggest_country(input_country):
 
 st.title("Eden's Country Game")
 input_country = st.text_input("Enter a country:", "").strip().lower()
+
+if 'turn' not in st.session_state:
+    st.session_state.turn = 0
 
 if input_country:
     input_country_lower = input_country.lower()
@@ -79,11 +84,10 @@ if input_country:
     else:
         st.write("Wrong input. The country is not in the current country bank.")
 
+st.write(f"Turns taken: {st.session_state.turn}")
+
 if st.button("Reset Game"):
     delete_game_copy()
-    st.cache_data.clear()
     create_game_copy()
-    st.session_state.turn = 0
+    played_countries.clear()  # Clear the list of played countries
     st.write("Game has been reset. Start a new game!")
-
-st.write(f"Turns taken: {st.session_state.turn}")
