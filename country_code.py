@@ -92,7 +92,7 @@ if input_country:
     else:
         st.write("Error, not found in the list of available countries (that haven't been played yet)")
 
-if st.button("Reset Game"):
+if st.button("New Game"):
     delete_game_copy()
     st.cache_resource.clear()
     create_game_copy()
