@@ -51,7 +51,7 @@ def suggest_country(input_country):
             min_last_letter_count = float('inf')
             suggested_country = ""
             for country in available_countries['country'].tolist():
-                country_last_letter_count = letter_bank[last_letter]
+                country_last_letter_count = letter_bank[country[-1]]
                 if country_last_letter_count < min_last_letter_count:
                     min_last_letter_count = country_last_letter_count
                     suggested_country = country
@@ -64,7 +64,7 @@ def suggest_country(input_country):
                 save_game_copy()  # Save the updated data to the copy CSV file
                 return suggested_country
     return f"You win!!! No country found for {last_letter}"
-
+    
 # Streamlit UI
 st.title("Eden's Country Game")
 
