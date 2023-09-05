@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Sep  5 20:05:56 2023
-
-@author: Benjamin
-"""
-
 import streamlit as st
 import pandas as pd
 import shutil  # For copying the CSV file
@@ -14,10 +7,19 @@ import os     # For file deletion
 def create_game_copy():
     shutil.copy('countries.csv', 'current_game_countries.csv')
 
+# Function to delete the copy of the CSV file for the current game
+def delete_game_copy():
+    if os.path.exists('current_game_countries.csv'):
+        os.remove('current_game_countries.csv')
+
 # Load the CSV file containing the countries and their first/last letters
 @st.cache_resource
 def load_country_data():
-    return pd.read_csv('countries.csv')
+    return pd.read_csv('current_game_countries.csv') if os.path.exists('current_game_countries.csv') else pd.DataFrame()
+
+# Function to save the modified data back to the copy CSV file
+def save_game_copy():
+    country_data.to_csv('current_game_countries.csv', index=False)
 
 # Initialize the copy of the CSV file for the current game
 create_game_copy()
@@ -52,11 +54,12 @@ def suggest_country(input_country):
                 letter_bank[last_letter] -= 1
                 if letter_bank[last_letter] == 0:
                     del letter_bank[last_letter]
+                save_game_copy()  # Save the updated data to the copy CSV file
                 return suggested_country
     return f"You win!!! No country found for {last_letter}"
-    
+
 # Streamlit UI
-st.title("Eden's Country Game")
+st.title("Country Game")
 
 # User input for a country
 input_country = st.text_input("Enter a country:", "").strip().lower()  # Convert to lowercase
@@ -79,9 +82,13 @@ if input_country:
         # Increment the turn counter
         st.session_state.turn += 1
     else:
-        st.write("Wrong input. The country is not in the current country bank.")
+        st.write("Wrong input. That is either not a country, or that country was played before.")
 
 # Display the turn count
-st.write(f"Turns taken: {st.session_state.turn}")
+st.write(f"Your turn number: {st.session_state.turn}")
 
-st.write(len(country_data['country'].tolist()))
+# Reset Game button
+if st.button("New Game"):
+    delete_game_copy()
+    create_game_copy()
+    st.write("Game has been reset. Start a new game!")
