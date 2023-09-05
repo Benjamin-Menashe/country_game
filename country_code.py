@@ -3,30 +3,14 @@ import pandas as pd
 import shutil  # For copying the CSV file
 import os     # For file deletion
 
-# Function to create a copy of the CSV file for the current game
-def create_game_copy():
-    shutil.copy('countries.csv', 'current_game_countries.csv')
-
-# Function to delete the copy of the CSV file for the current game
-def delete_game_copy():
-    if os.path.exists('current_game_countries.csv'):
-        os.remove('current_game_countries.csv')
-
 # Load the CSV file containing the countries and their first/last letters
 @st.cache_resource
 def load_country_data():
-    return pd.read_csv('current_game_countries.csv') if os.path.exists('current_game_countries.csv') else pd.DataFrame()
-
-# Function to save the modified data back to the copy CSV file
-def save_game_copy():
-    country_data.to_csv('current_game_countries.csv', index=False)
-
-# Initialize the copy of the CSV file for the current game
-create_game_copy()
+    return pd.read_csv('countries.csv')
 
 # Create a letter bank to count and sort the letters
 letter_bank = {}
-country_data = load_country_data()  # Load the copy for the current game
+country_data = load_country_data().copy()  # Load the copy for the current game
 
 for _, row in country_data.iterrows():
     first_letter = row['first_letter']
@@ -54,12 +38,11 @@ def suggest_country(input_country):
                 letter_bank[last_letter] -= 1
                 if letter_bank[last_letter] == 0:
                     del letter_bank[last_letter]
-                save_game_copy()  # Save the updated data to the copy CSV file
                 return suggested_country
     return f"You win!!! No country found for {last_letter}"
 
 # Streamlit UI
-st.title("Country Game")
+st.title("Eden's Country Game")
 
 # User input for a country
 input_country = st.text_input("Enter a country:", "").strip().lower()  # Convert to lowercase
