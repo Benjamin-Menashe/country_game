@@ -80,4 +80,5 @@ if st.button("Reset Game"):
     st.cache_resource.clear()
     delete_game_copy()
     create_game_copy()
+    st.session_state.turn = 0
     st.write("Game has been reset. Start a new game!")
