@@ -69,7 +69,7 @@ if 'turn' not in st.session_state:
     st.session_state.turn = 0
 
 if len(input_country) > 0:
-    if input_country in country_data['country'].str.lower().tolist():  # Convert to lowercase for comparison
+    if input_country in country_data["country"].tolist():  # Convert to lowercase for comparison
         country_data.drop(country_data[country_data['country'].str.lower() == input_country].index, inplace=True)  # Convert to lowercase for comparison
         last_letter = input_country[-1].lower()
         if last_letter in letter_bank:
