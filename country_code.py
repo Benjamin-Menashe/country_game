@@ -48,7 +48,7 @@ def suggest_country(input_country):
             min_last_letter_count = float('inf')
             suggested_country = ""
             for country in available_countries['country'].tolist():
-                country = random.choice(available_countries['country'].tolist())
+                suggested_country = random.choice(available_countries['country'].tolist())
 
 
             if suggested_country:
