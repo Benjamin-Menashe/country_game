@@ -41,18 +41,16 @@ played_countries = set()
 
 # Function to suggest a country based on the last letter of the input country
 def suggest_country(input_country):
-    last_letter = input_country[-1].lower()
-    
+    last_letter = input_country[-1].lower()    
     if last_letter in letter_bank:
         available_countries = country_data[country_data['first_letter'] == last_letter]
         
-        if len(available_countries) > 0:
+        if len(available_countries) > 1:
             min_last_letter_count = float('inf')
             suggested_country = ""
-            
             for country in available_countries['country'].tolist():
                 if country not in played_countries:
-                    count = letter_bank.get(country[-1], float('inf'))
+                    count = letter_bank.get(country[-1], 100)
                     if count < min_last_letter_count:
                         min_last_letter_count = count
                         suggested_country = country
