@@ -14,7 +14,7 @@ def delete_game_copy():
         os.remove('current_game_countries.csv')
 
 # Load the CSV file containing the countries and their first/last letters
-@st.cache
+@st.cache_resource
 def load_country_data():
     return pd.read_csv('current_game_countries.csv') if os.path.exists('current_game_countries.csv') else pd.DataFrame()
 
@@ -51,7 +51,7 @@ def suggest_country(input_country):
     return "No country found for that letter."
 
 # Streamlit UI
-st.title("Country Game")
+st.title("Eden's Country Game")
 
 # User input for a country
 input_country = st.text_input("Enter a country:", "").strip().lower()  # Convert to lowercase
