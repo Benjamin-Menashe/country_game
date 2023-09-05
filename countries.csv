@@ -1,0 +1,246 @@
+﻿country,first_letter,last_letter
+afghanistan,a,n
+albania,a,a
+algeria,a,a
+andorra,a,a
+angola,a,a
+antigua and barbuda,a,a
+argentina,a,a
+armenia,a,a
+australia,a,a
+austria,a,a
+azerbaijan,a,n
+bahamas,b,s
+bahrain,b,n
+bangladesh,b,h
+barbados,b,s
+belarus,b,s
+belgium,b,m
+belize,b,e
+benin,b,n
+bhutan,b,n
+bolivia,b,a
+bosnia and herzegovina,b,a
+botswana,b,a
+brazil,b,l
+brunei,b,i
+bulgaria,b,a
+burkina faso,b,o
+burundi,b,i
+côte d'ivoire,c,e
+cabo verde,c,e
+cambodia,c,a
+cameroon,c,n
+canada,c,a
+central african republic,c,c
+chad,c,d
+chile,c,e
+china,c,a
+colombia,c,a
+comoros,c,s
+congo (congo-brazzaville),c,)
+costa rica,c,a
+croatia,c,a
+cuba,c,a
+cyprus,c,s
+czechia (czech republic),c,)
+democratic republic of the congo,d,o
+denmark,d,k
+djibouti,d,i
+dominica,d,a
+dominican republic,d,c
+ecuador,e,r
+egypt,e,t
+el salvador,e,r
+equatorial guinea,e,a
+eritrea,e,a
+estonia,e,a
+"eswatini (fmr. ""swaziland"")",e,)
+ethiopia,e,a
+fiji,f,i
+finland,f,d
+france,f,e
+gabon,g,n
+gambia,g,a
+georgia,g,a
+germany,g,y
+ghana,g,a
+greece,g,e
+grenada,g,a
+guatemala,g,a
+guinea,g,a
+guinea-bissau,g,u
+guyana,g,a
+haiti,h,i
+holy see,h,e
+honduras,h,s
+hungary,h,y
+iceland,i,d
+india,i,a
+indonesia,i,a
+iran,i,n
+iraq,i,q
+ireland,i,d
+israel,i,l
+italy,i,y
+jamaica,j,a
+japan,j,n
+jordan,j,n
+kazakhstan,k,n
+kenya,k,a
+kiribati,k,i
+kuwait,k,t
+kyrgyzstan,k,n
+laos,l,s
+latvia,l,a
+lebanon,l,n
+lesotho,l,o
+liberia,l,a
+libya,l,a
+liechtenstein,l,n
+lithuania,l,a
+luxembourg,l,g
+madagascar,m,r
+malawi,m,i
+malaysia,m,a
+maldives,m,s
+mali,m,i
+malta,m,a
+marshall islands,m,s
+mauritania,m,a
+mauritius,m,s
+mexico,m,o
+micronesia,m,a
+moldova,m,a
+monaco,m,o
+mongolia,m,a
+montenegro,m,o
+morocco,m,o
+mozambique,m,e
+myanmar (formerly burma),m,)
+namibia,n,a
+nauru,n,u
+nepal,n,l
+netherlands,n,s
+new zealand,n,d
+nicaragua,n,a
+niger,n,r
+nigeria,n,a
+north korea,n,a
+north macedonia,n,a
+norway,n,y
+oman,o,n
+pakistan,p,n
+palau,p,u
+palestine state,p,e
+panama,p,a
+papua new guinea,p,a
+paraguay,p,y
+peru,p,u
+philippines,p,s
+poland,p,d
+portugal,p,l
+qatar,q,r
+romania,r,a
+russia,r,a
+rwanda,r,a
+saint kitts and nevis,s,s
+saint lucia,s,a
+saint vincent and the grenadines,s,s
+samoa,s,a
+san marino,s,o
+sao tome and principe,s,e
+saudi arabia,s,a
+senegal,s,l
+serbia,s,a
+seychelles,s,s
+sierra leone,s,e
+singapore,s,e
+slovakia,s,a
+slovenia,s,a
+solomon islands,s,s
+somalia,s,a
+south africa,s,a
+south korea,s,a
+south sudan,s,n
+spain,s,n
+sri lanka,s,a
+sudan,s,n
+suriname,s,e
+sweden,s,n
+switzerland,s,d
+syria,s,a
+tajikistan,t,n
+tanzania,t,a
+thailand,t,d
+timor-leste,t,e
+togo,t,o
+tonga,t,a
+trinidad and tobago,t,o
+tunisia,t,a
+turkey,t,y
+turkmenistan,t,n
+tuvalu,t,u
+uganda,u,a
+ukraine,u,e
+united arab emirates,u,s
+united kingdom,u,m
+united states of america,u,a
+uruguay,u,y
+uzbekistan,u,n
+vanuatu,v,u
+venezuela,v,a
+vietnam,v,m
+yemen,y,n
+zambia,z,a
+zimbabwe,z,e
+alabama,a,a
+alaska,a,a
+arizona,a,a
+arkansas,a,s
+california,c,a
+colorado,c,o
+connecticut,c,t
+delaware,d,e
+florida,f,a
+georgia,g,a
+hawaii,h,i
+idaho,i,o
+illinois,i,s
+indiana,i,a
+iowa,i,a
+kansas,k,s
+kentucky,k,y
+louisiana,l,a
+maine,m,e
+maryland,m,d
+massachusetts,m,s
+michigan,m,n
+minnesota,m,a
+mississippi,m,i
+missouri,m,i
+montana,m,a
+nebraska,n,a
+nevada,n,a
+new hampshire,n,e
+new jersey,n,y
+new mexico,n,o
+new york,n,k
+north carolina,n,a
+north dakota,n,a
+ohio,o,o
+oklahoma,o,a
+oregon,o,n
+pennsylvania,p,a
+rhode island,r,d
+south carolina,s,a
+south dakota,s,a
+tennessee,t,e
+texas,t,s
+utah,u,h
+vermont,v,t
+virginia,v,a
+washington,w,n
+west virginia,w,a
+wisconsin,w,n
+wyoming,w,g
