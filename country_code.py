@@ -90,7 +90,7 @@ if input_country:
         st.write(f"Suggested Country: {suggested_country}")
         st.session_state.turn += 1
     else:
-        st.write("That's either not a country or it's been played before, sorry")
+        st.write("Error, not found in the list of available countries (that haven't been played yet)")
 
 if st.button("Reset Game"):
     delete_game_copy()
