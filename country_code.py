@@ -30,7 +30,7 @@ def save_game_copy():
     country_data.to_csv('current_game_countries.csv', index=False)
 
 # Initialize the copy of the original CSV file for the current game
-if 'turn' not in st.session_state::
+if 'turn' not in st.session_state:
     create_game_copy()
 
 # Load the current country data and create the letter bank
