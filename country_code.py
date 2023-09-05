@@ -32,6 +32,7 @@ def save_game_copy():
 # Initialize the copy of the original CSV file for the current game
 if 'turn' not in st.session_state:
     create_game_copy()
+    st.session_state.turn = 0
 
 # Load the current country data and create the letter bank
 country_data = load_country_data()  # Load the copy for the current game
