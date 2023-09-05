@@ -72,7 +72,7 @@ def suggest_country(input_country, letter_bank):
                 save_game_copy()
                 return last_country
 
-    return f"You win!!! No country found for {last_letter}"
+    return f"You win!!! No country left that begins with {last_letter}"
 
 st.title("Eden's Country Game")
 input_country = st.text_input("Enter a country:", "").strip().lower()
@@ -89,10 +89,8 @@ if input_country:
         suggested_country = suggest_country(input_country_lower, letter_bank)
         st.write(f"Suggested Country: {suggested_country}")
         st.session_state.turn += 1
-    elif input_country_lower in played_countries:
-        st.write("worngo")
     else:
-        st.write("Unidentified input. Are you sure that's a country?")
+        st.write("That's either not a country or it's been played before, sorry")
 
 if st.button("Reset Game"):
     delete_game_copy()
