@@ -44,23 +44,32 @@ def suggest_country(input_country):
     last_letter = input_country[-1].lower()
     if last_letter in letter_bank:
         available_countries = country_data[country_data['first_letter'] == last_letter]
-        if len(available_countries) > 1:
+        if len(available_countries) > 0:
             min_last_letter_count = float('inf')
-            suggested_country = available_countries['country'][0]
+            suggested_country = ""
             for country in available_countries['country'].tolist():
                 if country not in played_countries:
                     count = letter_bank.get(country[-1], float('inf'))
                     if count < min_last_letter_count:
                         min_last_letter_count = count
                         suggested_country = country
-            
 
-        if suggested_country:
-            played_countries.add(suggested_country)
-            country_data.drop(country_data[country_data['country'] == suggested_country].index, inplace=True)
-            letter_bank = create_letter_bank(country_data)
-            save_game_copy()
-            return suggested_country
+            if suggested_country:
+                played_countries.add(suggested_country)
+                country_data.drop(country_data[country_data['country'] == suggested_country].index, inplace=True)
+                letter_bank = create_letter_bank(country_data)
+                save_game_copy()
+                return suggested_country
+
+        # If only one country with the given first letter is left, suggest it
+        elif len(available_countries) == 1:
+            last_country = available_countries.iloc[0]['country']
+            if last_country not in played_countries:
+                played_countries.add(last_country)
+                country_data.drop(country_data[country_data['country'] == last_country].index, inplace=True)
+                letter_bank = create_letter_bank(country_data)
+                save_game_copy()
+                return last_country
 
     return f"You win!!! No country found for {last_letter}"
 
