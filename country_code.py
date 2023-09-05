@@ -90,7 +90,7 @@ if input_country:
         st.write(f"Suggested Country: {suggested_country}")
         st.session_state.turn += 1
     else:
-        st.write("Wrong input. The country is not in the current country bank.")
+        st.write("Unidentified input. Are you sure that's a country?")
 
 if st.button("Reset Game"):
     delete_game_copy()
