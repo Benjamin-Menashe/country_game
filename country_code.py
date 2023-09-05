@@ -60,9 +60,6 @@ def suggest_country(input_country, letter_bank):
             if suggested_country:
                 played_countries.add(suggested_country)
                 country_data.drop(country_data[country_data['country'] == suggested_country].index, inplace=True)
-                letter_bank[last_letter] -= 1
-                if letter_bank[last_letter] == 0:
-                    del letter_bank[last_letter]
                 save_game_copy()
                 return suggested_country
 
@@ -72,9 +69,6 @@ def suggest_country(input_country, letter_bank):
             if last_country not in played_countries:
                 played_countries.add(last_country)
                 country_data.drop(country_data[country_data['country'] == last_country].index, inplace=True)
-                letter_bank[last_letter] -= 1
-                if letter_bank[last_letter] == 0:
-                    del letter_bank[last_letter]
                 save_game_copy()
                 return last_country
 
@@ -90,11 +84,8 @@ if input_country:
     input_country_lower = input_country.lower()
     if input_country_lower in country_data['country'].str.lower().tolist():
         country_data.drop(country_data[country_data['country'].str.lower() == input_country_lower].index, inplace=True)
+        letter_bank = create_letter_bank(country_data)
         last_letter = input_country_lower[-1].lower()
-        if last_letter in letter_bank:
-            letter_bank[last_letter] -= 1
-            if letter_bank[last_letter] == 0:
-                del letter_bank[last_letter]
         suggested_country = suggest_country(input_country_lower, letter_bank)
         st.write(f"Suggested Country: {suggested_country}")
         st.session_state.turn += 1
