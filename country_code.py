@@ -93,3 +93,5 @@ if st.button("Reset Game"):
     st.write("Game has been reset. Start a new game!")
 
 st.write(f"Turns taken: {st.session_state.turn}")
+
+st.write(letter_bank["y"])
