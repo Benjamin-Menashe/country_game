@@ -81,4 +81,3 @@ if st.button("Reset Game"):
     delete_game_copy()
     create_game_copy()
     st.write("Game has been reset. Start a new game!")
-
