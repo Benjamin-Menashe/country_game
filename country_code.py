@@ -89,11 +89,10 @@ if input_country:
         suggested_country = suggest_country(input_country_lower, letter_bank)
         st.write(f"Suggested Country: {suggested_country}")
         st.session_state.turn += 1
+    elif input_country_lower in played_countries:
+        st.write("worngo")
     else:
-        if input_country_lower in played_countries:
-            st.write("That country has been played before!")
-        else:
-            st.write("Unidentified input. Are you sure that's a country?")
+        st.write("Unidentified input. Are you sure that's a country?")
 
 if st.button("Reset Game"):
     delete_game_copy()
