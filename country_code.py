@@ -32,6 +32,10 @@ def save_game_copy():
 # Initialize the copy of the original CSV file for the current game
 create_game_copy()
 
+# Load the current country data and create the letter bank
+country_data = load_country_data()  # Load the copy for the current game
+letter_bank = create_letter_bank(country_data)  # Initialize the letter bank
+
 # Initialize a set to keep track of played countries
 played_countries = set()
 
@@ -75,10 +79,6 @@ def suggest_country(input_country, letter_bank):
                 return last_country
 
     return f"You win!!! No country found for {last_letter}"
-
-# Load the current country data and create the letter bank
-country_data = load_country_data()  # Load the copy for the current game
-letter_bank = create_letter_bank(country_data)  # Initialize the letter bank
 
 st.title("Eden's Country Game")
 input_country = st.text_input("Enter a country:", "").strip().lower()
