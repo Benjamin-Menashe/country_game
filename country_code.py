@@ -87,6 +87,7 @@ if input_country:
 
 if st.button("Reset Game"):
     delete_game_copy()
+    st.cache_resource.clear()
     create_game_copy()
     played_countries.clear()  # Clear the set of played countries
     st.write("Game has been reset. Start a new game!")
