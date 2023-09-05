@@ -80,3 +80,7 @@ if st.button("Reset Game"):
     delete_game_copy()
     create_game_copy()
     st.write("Game has been reset. Start a new game!")
+
+if st.button("Clear All"):
+    # Clears all st.cache_resource caches:
+    st.cache_resource.clear()
