@@ -4,9 +4,9 @@ Created on Tue Sep  5 20:05:56 2023
 
 @author: Benjamin
 """
+
 import streamlit as st
 import pandas as pd
-import random
 import shutil  # For copying the CSV file
 import os     # For file deletion
 
@@ -47,14 +47,19 @@ def suggest_country(input_country):
     if last_letter in letter_bank:
         available_countries = country_data[country_data['first_letter'] == last_letter]
         if len(available_countries) > 0:
-            country = random.choice(available_countries['country'].tolist())
-            country_data.drop(country_data[country_data['country'] == country].index, inplace=True)
-            letter_bank[last_letter] -= 1
-            if letter_bank[last_letter] == 0:
-                del letter_bank[last_letter]
-            save_game_copy()  # Save the updated data to the copy CSV file
-            return country
-    return "No country found for that letter."
+            # Find the country with the lowest value of "last_letter" in the letter bank
+            min_last_letter_count = min(letter_bank.values())
+            min_last_letter_countries = [c for c in available_countries['country'].tolist() if letter_bank[last_letter] == min_last_letter_count]
+            
+            if min_last_letter_countries:
+                country = min_last_letter_countries[0]
+                country_data.drop(country_data[country_data['country'] == country].index, inplace=True)
+                letter_bank[last_letter] -= 1
+                if letter_bank[last_letter] == 0:
+                    del letter_bank[last_letter]
+                save_game_copy()  # Save the updated data to the copy CSV file
+                return country
+    return f"You win!!! No country found for {last_letter}"
 
 # Streamlit UI
 st.title("Country Game")
@@ -80,18 +85,13 @@ if input_country:
         # Increment the turn counter
         st.session_state.turn += 1
     else:
-        st.write("Wrong input. The country is not in the current country bank.")
+        st.write("Wrong input. That is either not a country, or that country was played before.")
 
 # Display the turn count
-st.write(f"Turns taken: {st.session_state.turn}")
+st.write(f"Your turn number: {st.session_state.turn}")
 
 # Reset Game button
-if st.button("Reset Game"):
+if st.button("New Game"):
     delete_game_copy()
     create_game_copy()
     st.write("Game has been reset. Start a new game!")
-
-# Add an option to manually delete the copy file
-if st.button("Delete Game Data"):
-    delete_game_copy()
-    st.write("Game data has been deleted.")
