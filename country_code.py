@@ -44,33 +44,21 @@ def suggest_country(input_country):
     last_letter = input_country[-1].lower()
     if last_letter in letter_bank:
         available_countries = country_data[country_data['first_letter'] == last_letter]
-        if len(available_countries) > 0:
+        if len(available_countries) > 1:
             min_last_letter_count = float('inf')
-            suggested_country = ""
+            suggested_country = available_countries['country'][0]
             for country in available_countries['country'].tolist():
                 if country not in played_countries:
                     count = letter_bank.get(country[-1], float('inf'))
                     if count < min_last_letter_count:
                         min_last_letter_count = count
                         suggested_country = country
+            
 
-            if suggested_country:
-                played_countries.add(suggested_country)
-                country_data.drop(country_data[country_data['country'] == suggested_country].index, inplace=True)
-                letter_bank[last_letter] -= 1
-                if letter_bank[last_letter] == 0:
-                    del letter_bank[last_letter]
-                save_game_copy()
-                return suggested_country
-
-        # If only one country with the given first letter is left, suggest it
-        if len(available_countries) == 1 and available_countries.iloc[0]['country'] not in played_countries:
-            suggested_country = available_countries.iloc[0]['country']
+        if suggested_country:
             played_countries.add(suggested_country)
             country_data.drop(country_data[country_data['country'] == suggested_country].index, inplace=True)
-            letter_bank[last_letter] -= 1
-            if letter_bank[last_letter] == 0:
-                del letter_bank[last_letter]
+            letter_bank = create_letter_bank(country_data)
             save_game_copy()
             return suggested_country
 
