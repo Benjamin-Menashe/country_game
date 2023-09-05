@@ -20,7 +20,7 @@ def delete_game_copy():
         os.remove('current_game_countries.csv')
 
 # Load the CSV file containing the countries and their first/last letters
-@st.cache_data
+@st.cache_resource
 def load_country_data():
     return pd.read_csv('current_game_countries.csv') if os.path.exists('current_game_countries.csv') else pd.DataFrame()
 
