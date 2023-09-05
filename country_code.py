@@ -89,13 +89,13 @@ if input_country:
         # Increment the turn counter
         st.session_state.turn += 1
     else:
-        st.write("Wrong input. That is either not a country, or that country was played before.")
+        st.write("Wrong input. The country is not in the current country bank.")
 
 # Display the turn count
-st.write(f"Your turn number: {st.session_state.turn}")
+st.write(f"Turns taken: {st.session_state.turn}")
 
 # Reset Game button
-if st.button("New Game"):
+if st.button("Reset Game"):
     delete_game_copy()
     create_game_copy()
     st.write("Game has been reset. Start a new game!")
