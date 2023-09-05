@@ -79,10 +79,11 @@ if input_country:
     else:
         st.write("Wrong input. The country is not in the current country bank.")
 
-st.write(f"Turns taken: {st.session_state.turn}")
-
 if st.button("Reset Game"):
     delete_game_copy()
     st.cache_data.clear()
     create_game_copy()
+    st.session_state.turn = 0
     st.write("Game has been reset. Start a new game!")
+
+st.write(f"Turns taken: {st.session_state.turn}")
