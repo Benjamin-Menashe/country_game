@@ -77,10 +77,8 @@ if input_country:
 st.write(f"Turns taken: {st.session_state.turn}")
 
 if st.button("Reset Game"):
+    st.cache_resource.clear()
     delete_game_copy()
     create_game_copy()
     st.write("Game has been reset. Start a new game!")
 
-if st.button("Clear All"):
-    # Clears all st.cache_resource caches:
-    st.cache_resource.clear()
