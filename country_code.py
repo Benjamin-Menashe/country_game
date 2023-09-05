@@ -30,7 +30,9 @@ def save_game_copy():
     country_data.to_csv('current_game_countries.csv', index=False)
 
 # Initialize the copy of the original CSV file for the current game
-create_game_copy()
+if 'turn' not in st.session_state:
+    create_game_copy()
+    st.session_state.turn = 0
 
 # Load the current country data and create the letter bank
 country_data = load_country_data()  # Load the copy for the current game
@@ -61,9 +63,6 @@ def suggest_country(input_country):
 
 st.title("Eden's Country Game")
 input_country = st.text_input("Enter a country:", "").strip().lower()
-
-if 'turn' not in st.session_state:
-    st.session_state.turn = 0
 
 if input_country:
     input_country_lower = input_country.lower()
