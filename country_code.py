@@ -109,4 +109,4 @@ if input_country:
 
 st.write(f"Turns taken: {st.session_state.turn}")
 
-st.write(sorted(st.session_state.played_countries))
+st.write(sorted(st.session_state.played_countries).tolist())
