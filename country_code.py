@@ -1,8 +1,8 @@
 import streamlit as st
 import pandas as pd
+import random
 import shutil
 import os
-import random
 
 # Function to create a copy of the original CSV file for the current game
 def create_game_copy():
