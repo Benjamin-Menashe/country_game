@@ -59,7 +59,7 @@ def suggest_country(input_country, letter_bank):
                         suggested_country = country
 
             if suggested_country:
-                st.session_sate.played_countries.add(suggested_country)
+                st.session_state.played_countries.add(suggested_country)
                 country_data.drop(country_data[country_data['country'] == suggested_country].index, inplace=True)
                 save_game_copy()
                 return suggested_country
@@ -68,7 +68,7 @@ def suggest_country(input_country, letter_bank):
         elif len(available_countries) == 1:
             last_country = available_countries.iloc[0]['country']
             if last_country not in played_countries:
-                st.session_sate.played_countries.add(last_country)
+                st.session_state.played_countries.add(last_country)
                 country_data.drop(country_data[country_data['country'] == last_country].index, inplace=True)
                 save_game_copy()
                 return last_country
@@ -84,7 +84,7 @@ if 'turn' not in st.session_state:
 if input_country:
     input_country_lower = input_country.lower()
     if input_country_lower in country_data['country'].str.lower().tolist():
-        st.session_sate.played_countries.add(input_country_lower)
+        st.session_state.played_countries.add(input_country_lower)
         country_data.drop(country_data[country_data['country'].str.lower() == input_country_lower].index, inplace=True)
         letter_bank = create_letter_bank(country_data)
         last_letter = input_country_lower[-1].lower()
