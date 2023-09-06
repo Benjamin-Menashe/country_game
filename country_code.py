@@ -76,6 +76,16 @@ def suggest_country(input_country, letter_bank):
     return f"You win!!! No country left that begins with {last_letter}"
 
 st.title("Eden's Country Game")
+
+if st.button("New Game"):
+    input_country = ""
+    delete_game_copy()
+    st.cache_resource.clear()
+    create_game_copy()
+    st.session_state.played_countries.clear()  # Clear the set of played countries
+    st.session_state.turn = 0
+    st.write("New game started!")
+    
 input_country = st.text_input("Enter a country:", "").strip().lower()
 
 if 'turn' not in st.session_state:
@@ -95,14 +105,5 @@ if input_country:
         st.write("Error, country not found")
         if input_country_lower in st.session_state.played_countries:
             st.write(f"{input_country_lower} was already used in this game")
-
-if st.button("New Game"):
-    input_country = ""
-    delete_game_copy()
-    st.cache_resource.clear()
-    create_game_copy()
-    st.session_state.played_countries.clear()  # Clear the set of played countries
-    st.session_state.turn = 0
-    st.write("New game started!")
 
 st.write(f"Turns taken: {st.session_state.turn}")
