@@ -97,6 +97,7 @@ if input_country:
             st.write(f"{input_country_lower} was already used in this game")
 
 if st.button("New Game"):
+    input_country = ""
     delete_game_copy()
     st.cache_resource.clear()
     create_game_copy()
