@@ -62,7 +62,7 @@ def suggest_country(input_country, letter_bank):
                 st.session_state.played_countries.add(suggested_country)
                 country_data.drop(country_data[country_data['country'] == suggested_country].index, inplace=True)
                 save_game_copy()
-                return suggested_country
+                return f"Suggested Country: {suggested_country}"
 
         # If only one country with the given first letter is left, suggest it
         elif len(available_countries) == 1:
@@ -71,7 +71,7 @@ def suggest_country(input_country, letter_bank):
                 st.session_state.played_countries.add(last_country)
                 country_data.drop(country_data[country_data['country'] == last_country].index, inplace=True)
                 save_game_copy()
-                return last_country
+                return f"Suggested Country: {last_country}"
 
     return f"You win!!! No country left that begins with {last_letter}"
 
@@ -100,7 +100,8 @@ if input_country:
         letter_bank = create_letter_bank(country_data)
         last_letter = input_country_lower[-1].lower()
         suggested_country = suggest_country(input_country_lower, letter_bank)
-        st.write(f"Suggested Country: {suggested_country}")
+        st.write(suggested_country)
+        st.st.session_state["text"] = suggested_country[-1]
         st.session_state.turn += 1
     else:
         st.write("Error, country not found")
