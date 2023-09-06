@@ -102,6 +102,7 @@ if input_country:
         suggested_country = suggest_country(input_country_lower, letter_bank)
         st.write(suggested_country)
         st.session_state.turn += 1
+        input_country = "v"
     else:
         st.write("Error, country not found")
         if input_country_lower in st.session_state.played_countries:
