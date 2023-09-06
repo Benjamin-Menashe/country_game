@@ -52,7 +52,7 @@ def suggest_country(input_country, letter_bank):
             suggested_country = ""
             
             for country in available_countries['country'].tolist():
-                if country not in played_countries:
+                if country not in st.session_state.played_countries:
                     count = letter_bank.get(country[-1], float('inf'))
                     if count < min_last_letter_count:
                         min_last_letter_count = count
@@ -67,7 +67,7 @@ def suggest_country(input_country, letter_bank):
         # If only one country with the given first letter is left, suggest it
         elif len(available_countries) == 1:
             last_country = available_countries.iloc[0]['country']
-            if last_country not in played_countries:
+            if last_country not in st.session_state.played_countries:
                 st.session_state.played_countries.add(last_country)
                 country_data.drop(country_data[country_data['country'] == last_country].index, inplace=True)
                 save_game_copy()
@@ -93,7 +93,7 @@ if input_country:
         st.session_state.turn += 1
     else:
         st.write("Error, country not found")
-        if input_country_lower in played_countries:
+        if input_country_lower in st.session_state.played_countries:
             st.write(f"{input_country_lower} was already used in this game")
 
 if st.button("New Game"):
