@@ -88,6 +88,11 @@ if st.button("New Game"):
 
 input_country = st.text_input("Enter a country:", "").strip().lower()
 
+def clear_text():
+    st.session_state["text"] = ""
+    
+st.button("clear text input", on_click=clear_text)
+
 if 'turn' not in st.session_state:
     st.session_state.turn = 0
 
