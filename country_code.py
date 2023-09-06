@@ -53,10 +53,11 @@ def suggest_country(input_country, letter_bank):
             
             for country in available_countries['country'].tolist():
                 if country not in st.session_state.played_countries:
-                    count = letter_bank.get(country[-1], float('inf'))
-                    if count < min_last_letter_count:
-                        min_last_letter_count = count
-                        suggested_country = country
+                    country = random.choice(available_countries['country'].tolist())
+#                   count = letter_bank.get(country[-1], float('inf'))
+#                   if count < min_last_letter_count:
+#                       min_last_letter_count = count
+#                       suggested_country = country
 
             if suggested_country:
                 st.session_state.played_countries.add(suggested_country)
