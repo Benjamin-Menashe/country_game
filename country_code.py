@@ -106,5 +106,6 @@ if input_country:
         st.write("Error, country not found")
         if input_country_lower in st.session_state.played_countries:
             st.write(f"{input_country_lower} was already used in this game")
+    st.session_state["text"] = ""
 
 st.write(f"Turns taken: {st.session_state.turn}")
