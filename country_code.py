@@ -101,7 +101,7 @@ if input_country:
         last_letter = input_country_lower[-1].lower()
         suggested_country = suggest_country(input_country_lower, letter_bank)
         st.write(suggested_country)
-        st.session_state["text"] = suggested_country[-1]
+        st.session_state["text"] = f"{suggested_country[-1]}"
         st.session_state.turn += 1
     else:
         st.write("Error, country not found")
