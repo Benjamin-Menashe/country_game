@@ -86,10 +86,7 @@ if st.button("New Game"):
     st.session_state.turn = 0
     st.write("New game started!")
 
-def clear_input_box():
-    st.session_state["new_item"] = ""
-    
-input_country = st.text_input("Enter a country:", "", on_change=clear_input_box, key="new_item").strip().lower()
+input_country = st.text_input("Enter a country:", "").strip().lower()
 
 if 'turn' not in st.session_state:
     st.session_state.turn = 0
