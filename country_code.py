@@ -79,6 +79,7 @@ st.title("Eden's Country Game")
 
 if st.button("New Game"):
     input_country = ""
+    st.session_state["text"] = ""
     delete_game_copy()
     st.cache_resource.clear()
     create_game_copy()
@@ -86,12 +87,7 @@ if st.button("New Game"):
     st.session_state.turn = 0
     st.write("New game started!")
 
-input_country = st.text_input("Enter a country:", "").strip().lower()
-
-def clear_text():
-    st.session_state["text"] = ""
-    
-st.button("clear text input", on_click=clear_text)
+input_country = st.text_input("Enter a country:", "", key="text").strip().lower()
 
 if 'turn' not in st.session_state:
     st.session_state.turn = 0
