@@ -108,4 +108,5 @@ if input_country:
             st.write(f"{input_country_lower} was already used in this game")
 
 st.write(f"Turns taken: {st.session_state.turn}")
-st.write(st.session_state.played_countries)
+
+st.write(sorted(st.session_state.played_countries))
