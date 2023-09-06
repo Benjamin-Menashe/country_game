@@ -83,6 +83,7 @@ if 'turn' not in st.session_state:
 if input_country:
     input_country_lower = input_country.lower()
     if input_country_lower in country_data['country'].str.lower().tolist():
+        played_countries.add(input_country_lower)
         country_data.drop(country_data[country_data['country'].str.lower() == input_country_lower].index, inplace=True)
         letter_bank = create_letter_bank(country_data)
         last_letter = input_country_lower[-1].lower()
@@ -90,7 +91,9 @@ if input_country:
         st.write(f"Suggested Country: {suggested_country}")
         st.session_state.turn += 1
     else:
-        st.write("Error, not found in the list of available countries (that haven't been played yet)")
+        st.write("Error, country not found")
+        if input_country_lower in played_countries:
+            st.write(f"{input_country_lower} was already used in this game")
 
 if st.button("New Game"):
     delete_game_copy()
@@ -98,6 +101,6 @@ if st.button("New Game"):
     create_game_copy()
     played_countries.clear()  # Clear the set of played countries
     st.session_state.turn = 0
-    st.write("Game has been reset. Start a new game!")
+    st.write("New game started!")
 
 st.write(f"Turns taken: {st.session_state.turn}")
