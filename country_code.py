@@ -86,7 +86,7 @@ if st.button("New Game"):
     st.session_state.turn = 0
     st.write("New game started!")
     
-input_country = st.text_input("Enter a country:", input_country).strip().lower()
+input_country = st.text_input("Enter a country:", "").strip().lower()
 
 if 'turn' not in st.session_state:
     st.session_state.turn = 0
