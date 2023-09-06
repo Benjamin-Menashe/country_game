@@ -75,6 +75,9 @@ def suggest_country(input_country, letter_bank):
 
     return f"You win!!! No country left that begins with {last_letter}"
 
+def replace_text(country):
+    st.session_state["text"] = country[-1]
+
 st.title("Eden's Country Game")
 
 if st.button("New Game"):
@@ -102,7 +105,7 @@ if input_country:
         suggested_country = suggest_country(input_country_lower, letter_bank)
         st.write(suggested_country)
         st.session_state.turn += 1
-        input_country = "v"
+        replace_text(suggested_country)
     else:
         st.write("Error, country not found")
         if input_country_lower in st.session_state.played_countries:
