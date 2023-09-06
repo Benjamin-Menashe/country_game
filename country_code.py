@@ -100,7 +100,7 @@ if st.button("New Game"):
     delete_game_copy()
     st.cache_resource.clear()
     create_game_copy()
-    played_countries.clear()  # Clear the set of played countries
+    st.session_state.played_countries.clear()  # Clear the set of played countries
     st.session_state.turn = 0
     st.write("New game started!")
 
